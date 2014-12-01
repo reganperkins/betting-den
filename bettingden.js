@@ -18,7 +18,7 @@ $(document).ready(function(){
     if(player_money - bet > 0) {
       if (guess == number){
         player_money += (bet * 2);
-        $(this).append('You win!\n The number was '+ number +'. You now have '+ player_money);
+        $('#result').html('You win!\n The number was '+ number +'. You now have '+ player_money);
       } else if ((guess == number - 1) || (guess == number + 1)) {
         $('#result').html('Almost! The number was '+ number +'.\n You now have '+ player_money);
       } else {
@@ -28,7 +28,7 @@ $(document).ready(function(){
     } else {
       $('#result').html('You only have '+ player_money +'</p></div>');
     }
-
+    $('#betting_den').children(':input[type="number"]').val('')
   });
 
 });
