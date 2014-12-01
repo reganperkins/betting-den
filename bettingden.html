@@ -1,1 +1,23 @@
-bettingden.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <title>Betting Den</title>
+</head>
+<body>
+
+  <form id="betting_den" onsubmit="return false">
+    What place your bet:
+    <input id="user_bet" type="number" name="bet"> <br />
+    Pick a number between one and ten:
+    <input id="user_guess" type="number" name="guess"> <br />
+    <input type="submit" value="Submit">
+  </form>
+  
+  <p id="result"></p>
+
+</body>
+<script src="bettingden.js"></script>
+</html>
+

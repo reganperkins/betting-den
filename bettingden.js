@@ -6,21 +6,31 @@
 
 // Use prompt and alert to communicate with the user.
 
-var player_money = 100;
+$(document).ready(function(){
 
-while(player_money > 0){
-  var number = Math.floor(Math.random() * (10 - 1)) + 1;
-  var bet = prompt('Place your bet! This must be between $5 and $10');
-  var guess = prompt('Now pick your number');
-  
-  if (guess == number){
-    player_money += bet * 2;
-    alert('You win!\n The number was '+ number +'. You now have '+ player_money);
-  } else if (guess == number - 1 || guess == number + 1) {
-    player_money += bet;
-    alert('Almost! The number was '+ number +'\n. You now have '+ player_money);
-  } else {
-    player_money -= bet;
-    alert('You lost! The number was '+ number +'\n. You now have '+ player_money);
-  }
-}
+  var player_money = 100;
+
+  $('#betting_den').on("submit", function() {  
+    var number = Math.floor(Math.random() * (10 - 1)) + 1;
+    var bet = $('#user_bet').val();
+    var guess = $('#user_guess').val();
+
+    if(player_money - bet > 0) {
+      if (guess == number){
+        player_money += (bet * 2);
+        $(this).append('You win!\n The number was '+ number +'. You now have '+ player_money);
+      } else if ((guess == number - 1) || (guess == number + 1)) {
+        $('#result').html('Almost! The number was '+ number +'.\n You now have '+ player_money);
+      } else {
+        player_money -= bet;
+        $('#result').html('You lost! The number was '+ number +'.\n You now have '+ player_money);
+      }
+    } else {
+      $('#result').html('You only have '+ player_money +'</p></div>');
+    }
+
+  });
+
+});
+
+
